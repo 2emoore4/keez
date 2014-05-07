@@ -28,6 +28,6 @@ from `server/`...
 * `npm install` (this installs dependencies from `package.json`)
 * `node server.js` (this starts the server on port 8888)
 
-now you can use the application at [localhost:8888/zkrypt.html](localhost:8888/zkrypt.html)
+now you can use the application at [localhost:8008/zkrypt.html](localhost:8008/zkrypt.html)
 
 I don't have any documentation yet. click or drag on the timeline to create a keyframe. a window will appear where you can write some lispy code (look in lang.js to figure out how the language works). if the app freezes on a keyframe, there was probably a syntax error, check the console.
