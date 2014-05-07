@@ -1,0 +1,86 @@
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background-color: #c5fcea;
+    color: #030303;
+    height: 95%;
+    width: 100%;
+}
+
+#toggle {
+    min-width: 60px;
+}
+
+#undo {
+    min-width: 60px;
+}
+
+#reset {
+    min-width: 60px;
+}
+
+#viewer {
+    border-radius: 4px;
+    height: 55%;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#keys {
+    background-color: #d3d1d0;
+    border-radius: 4px;
+    width: 90%;
+    display: inline;
+    border: 2px solid;
+}
+
+#canvas-container {
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+    height: 35%;
+}
+
+#editor_div {
+    position: absolute;
+    top: 75px;
+    left: 75px;
+    height: 200px;
+    width: 400px;
+    border: 2px solid #aaa;
+    box-shadow: 0px 0px 80px #888;
+    display: none;
+}
+
+#footer {
+    margin-top: 16px;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 13px;
+}
+
+#save {
+    position: absolute;
+    left: 100px;
+    top: 290px;
+    display: none;
+    box-shadow: 0px 0px 80px #888;
+}
+
+#cancel {
+    position: absolute;
+    left: 380px;
+    top: 290px;
+    display: none;
+    box-shadow: 0px 0px 80px #888;
+}
+
+#frame-counter {
+    float: right;
+    font-weight: bold;
+}

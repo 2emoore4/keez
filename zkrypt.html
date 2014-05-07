@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>stuff</title>
+        <link rel="stylesheet" type="text/css" href="third_party/flat/css/flat-ui.css">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="third_party/pixi.dev.js"></script>
+        <script src="third_party/gl-matrix-min.js"></script>
+        <script src="third_party/perlin.js"></script>
+        <script src="third_party/jquery.js"></script>
+        <script src="third_party/sugar.js"></script>
+        <script src="third_party/peg.js"></script>
+        <script src="third_party/plt.js"></script>
+        <script src="third_party/ace.js"></script>
+    </head>
+
+    <body>
+        <a href="https://github.com/2emoore4/keez"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
+        <div id="editor_div"></div>
+        <button id="save" class="btn btn-success">save</button><button id="cancel" class="btn btn-danger">cancel</button>
+        <div id="viewer"></div>
+        <div id="canvas-container">
+            <canvas id="keys"></canvas>
+        </div>
+        <div id="footer">
+            <button id="toggle" class="btn btn-xs btn-primary">play</button>
+            <button id="undo" class="btn btn-xs btn-warning">undo</button>
+            <button id="reset" class="btn btn-xs btn-danger">reset</button>
+            <span id="frame-counter">0</span>
+        </div>
+        <script src="lang.js"></script>
+        <script src="noize/lib/util.js"></script>
+        <script src="noize/lib/person.js"></script>
+        <script src="lib/zkrypt.js"></script>
+        <script src="lib/keez.js"></script>
+    </body>
+
+    <grammar>
+        start             = space e:expression { return lang.eval(e) }
+        expression        = operation / number / identifier / string
+
+        operation         = '(' space op:operator space args:expression+ ')' space { return [op].concat(args) }
+        operator          = '+' / '-' / '/' / '*' / '<' / '>' / '=' / 'if' / '#' / 'for' / '%' / '.' / 'v' / 'js' / 'rotate_z' / 'rotate_y' / 'rotate_x' / 'translate' / 'scale' / 'reset'
+
+        letter            = [a-zA-Z]
+        id_char           = letter / digit
+        identifier        = h:letter t:id_char* space { return h + t.join('') }
+
+        string            = '{' s:[^}]* '}' space { return s.join('') }
+
+        number            = d:digit+ space { return parseInt( d.join('') ) }
+        digit             = [0123456789]
+
+        space             = white_space* / !. { return undefined }
+        mandatory_space   = white_space+ / !. { return undefined }
+        white_space       = ' ' / '\n'
+    </grammar>
+</html>
